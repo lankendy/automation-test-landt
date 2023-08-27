@@ -25,7 +25,7 @@ public class Day15_ClientPageFactory {
 
     // xpath cua dropdown list
     // Gia tri cua tung owner trong man add client
-    @FindBy(xpath = "(//ul[@role='listbox'])[9]/li[1]")
+    @FindBy(xpath = "(//ul[@role='listbox'])[2]/li[1]")
     private WebElement ownerValue1;
 
     @FindBy(xpath = "//button[@class='btn btn-primary']")
