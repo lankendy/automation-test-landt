@@ -39,6 +39,13 @@ public class Day14_SignUpFactory {
     @FindBy(xpath = "//button[text()='Lưu mật khẩu mới']")
     private WebElement buttonSavePassword;
 
+    @FindBy(id = "email")
+    private WebElement txtemail;
+    @FindBy(id="password")
+    private WebElement password;
+    @FindBy(xpath = "//button[text()='Sign in']")
+    private WebElement buttonLogin;
+
     public Day14_SignUpFactory(WebDriver _driver) {
         this.driver = _driver;
         PageFactory.initElements(_driver, this);
@@ -67,5 +74,14 @@ public class Day14_SignUpFactory {
         txtRenewPass.sendKeys(newPass);
         txtRenewPass.sendKeys(newPass);
         buttonSavePassword.click();
+    }
+
+    public void loginWithNewPassword(String email, String newPass)
+    {
+        txtemail.clear();
+        txtemail.sendKeys(email);
+        password.clear();
+        password.sendKeys(newPass);
+        buttonLogin.click();
     }
 }
