@@ -8,16 +8,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
 
 public class Day14_LoginTestFactory extends CommonBase {
     @BeforeTest
-    public void openApplication()
-    {
-        driver = initChromeDriver(AccountConstant.webURL);
+    @Parameters("testNgBrowser")
+    public void openPage(String browserName) {
+        setupDriver(browserName);
+        driver.get(AccountConstant.webURL);
     }
+//    public void openApplication()
+//    {
+//        driver = initChromeDriver(AccountConstant.webURL);
+//    }
 
     @Test
     public void loginSuccessfully()

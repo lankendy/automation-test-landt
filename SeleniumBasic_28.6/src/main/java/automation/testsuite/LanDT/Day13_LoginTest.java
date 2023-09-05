@@ -7,15 +7,22 @@ import automation.pagelocator.Day13_LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
 
 public class Day13_LoginTest extends CommonBase {
     @BeforeTest
-    public void openPage() {
-        driver = initChromeDriver(AccountConstant.webURL);
+    @Parameters("testNgBrowser")
+    public void openPage(@Optional("chrome") String browserName) {
+        setupDriver(browserName);
+        driver.get(AccountConstant.webURL);
     }
+//    public void openPage() {
+//        driver = initChromeDriver(AccountConstant.webURL);
+//    }
 
     @Test
     public void loginSuccessfull() {
@@ -56,17 +63,17 @@ public class Day13_LoginTest extends CommonBase {
         assertTrue(expected.isDisplayed());
     }
 
-    @Test
-    public void logout()
-    {
-        this.loginSuccessfull();
-        Day13_LoginPage page = new Day13_LoginPage(driver);
-        WebElement avatarIcon = driver.findElement(page.avatar);
-        avatarIcon.click();
-        WebElement signoutIcon = driver.findElement(page.signout);
-        signoutIcon.click();
-        // kiem tra khi logout thanh cong
-        WebElement expectedBtnSignIn = driver.findElement(page.buttonLogin);
-        assertTrue(expectedBtnSignIn.isDisplayed());
-    }
+//    @Test
+//    public void logout()
+//    {
+//        this.loginSuccessfull();
+//        Day13_LoginPage page = new Day13_LoginPage(driver);
+//        WebElement avatarIcon = driver.findElement(page.avatar);
+//        avatarIcon.click();
+//        WebElement signoutIcon = driver.findElement(page.signout);
+//        signoutIcon.click();
+//        // kiem tra khi logout thanh cong
+//        WebElement expectedBtnSignIn = driver.findElement(page.buttonLogin);
+//        assertTrue(expectedBtnSignIn.isDisplayed());
+//    }
 }

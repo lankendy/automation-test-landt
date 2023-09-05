@@ -8,16 +8,26 @@ import automation.pagelocator.Day15_ClientPageFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
 
 public class Day15_ClientTestFactory extends CommonBase {
     @BeforeTest
+    //    buoi 18 multi browser
+//    @Parameters("testNgBrowser")
+//    public void openPage(String browser) {
+//        setupDriver(browser);
+//        driver.get(AccountConstant.webURL);
+//    }
     public void openApplication()
     {
         driver = initChromeDriver(AccountConstant.webURL);
     }
+
+
+
 
     @Test
     public void addClientSuccessfully() throws InterruptedException
